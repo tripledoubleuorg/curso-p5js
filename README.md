@@ -222,176 +222,95 @@ function draw(){
 }
 ````
 
-## Video
+## Condicionais
+As estruturas condicionais em programação servem para verficar se uma condição é verdadeira ou falsa (expressão boleana).
 
-### Iniciar
-Para dar início a uma captura é necessário na função de `setup()` utilizar a função `createCapture(VIDEO)`. Esta função vai ligar a webcam do computador e criar um elemento na DOM separado da `canvas`.
+### Exemplo
+- 10 < 5 → falso
+- 20 > 1 → verdadeiro
 
-````Javascript
-function setup() {
-  createCanvas(320, 240);
-  background(50);
-  createCapture(VIDEO);
-}
+## Operadores relacionais
+- maior >
+- menor <
+- maior ou igual >=
+- menor ou igual <=
+- igual ==
+- não igual !=
 
-function draw() {
-  
+````
+if(expressão booleana for verdadeira) {
+	Alguma coisa acontece.
 }
 ````
 
-### Video dentro da Canvas
 ````Javascript
-var video;
-function setup() {
-  createCanvas(320, 240);
-  video = createCapture(VIDEO);
-  video.size(320, 240);
+var posicaoX = 0;
+var velocidade = 1;
+
+function setup(){
+  createCanvas(400,400);
 }
 
-function draw() {
-  image(video, 0, 0, width, height);
+function draw(){
+  background(255, 255, 0);
+  ellipse(posicaoX, width/2, 30, 30);
+  if(posicaoX > width) {
+    velocidade = -1;
+  } else if(posicaoX < 0) {
+    velocidade = 1;
+  }
+  posicaoX = posicaoX + velocidade;
 }
 ````
 
+## Loop
+Um loop ou repetidor é uma estrutura controlada para correr código repetidamente, com valores diferentes a cada vez.
 
-
-### Manipular video
-````Javascript
-var video;
-function setup() {
-  createCanvas(320, 240);
-  video = createCapture(VIDEO);
-  video.size(320, 240);
-}
-
-function draw() {
-  tint(mouseY, 0, 0);
-  image(video, 0, 0, mouseX, height);
-}
-````
-
-
-### Pixel Arrays
 ````Javascript
 function setup() {
   createCanvas(400, 400);
-  pixelDensity(1);
+  background(220);
 }
 
 function draw() {
-  background(0);
-  loadPixels();
-  
-  for(var y = 0; y < height; y++){
-    for(var x = 0; x < width; x++){
-      var index = (x + y * width) * 4;
-        pixels[index] = random(0,255);
-        pixels[index+1] = random(0,255);
-        pixels[index+2] = random(0,255);
-        pixels[index+3] = random(0,255);
-    }
+  for(var i = 0; i <= width; i+=50){
+    ellipse(i, height/2, 25, 25);
   }
- 
-  updatePixels();
 }
 ````
 
-### Vidoe Pixel Arrays
 ````Javascript
-let video;
 function setup() {
   createCanvas(400, 400);
-  pixelDensity(1);
-  video = createCapture(VIDEO);
-  video.size(400, 400)
+  background(220);
 }
 
 function draw() {
-  background(0);
-  
-  video.loadPixels()
-  loadPixels();
-  
-  for(var y = 0; y < height; y++){
-    for(var x = 0; x < width; x++){
-      var index = (x + y * width) * 4;
-        pixels[index] = video.pixels[index];
-        pixels[index+1] = video.pixels[index+1];
-        pixels[index+2] = video.pixels[index+2];
-        pixels[index+3] = video.pixels[index+3];
+  noStroke();
+  for (var x = 0; x <= width; x += 50) {
+    for (var y = 0; y <= height; y += 50) {
+      fill(random(255), random(255), random(255));
+      ellipse(x, y, 25, 25);
     }
   }
- 
-  updatePixels();
 }
 ````
 
 ````Javascript
-let video;
 function setup() {
   createCanvas(400, 400);
-  pixelDensity(1);
-  video = createCapture(VIDEO);
-  video.size(400, 400)
+  background(220);
 }
 
 function draw() {
-  background(0);
-  
-  video.loadPixels()
-  loadPixels();
-  
-  for(var y = 0; y < height; y++){
-    for(var x = 0; x < width; x++){
-      var index = (x + y * width) * 4;
-      
-      var r = video.pixels[index];
-      var g = video.pixels[index+1];
-      var b = video.pixels[index+2];
-      
-      
-      
-        pixels[index] = r;
-        pixels[index+1] = g;
-        pixels[index+2] = b;
-        pixels[index+3] = 255;
+  noStroke();
+  background(255,255, 0);
+  for (var x = 0; x <= mouseX; x += 50) {
+    for (var y = 0; y <= mouseY; y += 50) {
+      fill(random(255), random(255), random(255));
+      ellipse(x, y, 25, 25);
     }
   }
- 
-  updatePixels();
 }
 ````
-````Javascript
-let video;
-let vScale = 20;
-function setup() {
-  createCanvas(800, 600);
-  pixelDensity(1);
-  video = createCapture(VIDEO);
-  video.size(width/vScale, height/vScale)
-}
 
-function draw() {
-  background(0, 0, 255);
-  
-  video.loadPixels()
-  loadPixels();
-  
-  for(var y = 0; y <= video.height; y++){
-    for(var x = 0; x <= video.width; x++){
-      var index = (video.width - x + 1 + (y * video.width)) * 4;
-      var r = video.pixels[index];
-      var g = video.pixels[index+1];
-      var b = video.pixels[index+2];
-      
-        var bright = (r+g+b)/3; 
-        var mapBright = map(bright, 0, 255, 0, vScale);
-        noStroke();
-        fill(255, 255, 0);
-        rectMode(CENTER)
-        rect(x*vScale, y*vScale, mapBright, mapBright)
-    }
-  }
-
-}
-````
