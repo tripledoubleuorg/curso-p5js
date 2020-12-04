@@ -115,7 +115,7 @@ Dentro das funções encontramos também formas primitivas como:
 
 ## Cores
 Por defeito o P5.js utiliza o sistema de cor RGB e também tem funções pré-definidas:
-- olorMode()
+- colorMode()
 - fill()
 - noFill()
 - stroke()
