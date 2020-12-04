@@ -273,10 +273,10 @@ Um loop ou repetidor é uma estrutura controlada para correr código repetidamen
 ````Javascript
 function setup() {
   createCanvas(400, 400);
-  background(220);
 }
 
 function draw() {
+   background(255,255, 0);
   for(var i = 0; i <= width; i+=50){
     ellipse(i, height/2, 25, 25);
   }
@@ -286,10 +286,10 @@ function draw() {
 ````Javascript
 function setup() {
   createCanvas(400, 400);
-  background(220);
 }
 
 function draw() {
+   background(255,255, 0);
   noStroke();
   for (var x = 0; x <= width; x += 50) {
     for (var y = 0; y <= height; y += 50) {
