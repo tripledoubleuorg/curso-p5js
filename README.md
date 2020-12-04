@@ -5,12 +5,16 @@ O p5.js é uma biblioteca JavaScript open-source para código criativo.
 ## Conteudos
 - [Do processing ao p5.js](do-processing-ao-p5.js)
 - [Ambiente do p5.js](ambiente-do-p5-js)
-- Principais funções do p5.js
-- Operadores
-- Funções
-- Condicionais
-- Loops
+- [Formas](forma)
+- [Cores](cores)
+- [Texto](texto)
+- [Variáves](variaveis)
+- [Operadores](operadores)
+- [Condicionais](condicionais)
+- [Loops](loops)
+- [Funções](funcoes)
 - Sensores
+
 
 ##  Do processing ao P5.js
 
@@ -311,6 +315,39 @@ function draw() {
       ellipse(x, y, 25, 25);
     }
   }
+}
+````
+
+## Funções
+As funções funcionam como acções no Javascript. Elas permitem executar determinado código e podem ter argumentos e retornar determidado valor. As funções são declaradas pelo termo function e têm de ser chamadas ou executadas.
+
+````Javascript
+function nomeFuncao(props){
+    // corpo da funcao
+}
+
+nomeFuncao(); // chamar funcao
+````
+````Javascript
+let canvas, r, g, b;
+
+function setup() {
+  canvas = createCanvas(400, 400);
+  canvas.mouseClicked(randomColor);
+  r = 0;
+  g = 0;
+  b = 0;
+}
+
+function draw() {
+
+background(r,g,b);
+}
+
+function randomColor() {
+  r = random(0, 255);
+  g = random(0, 255);
+  b = random(0, 255);
 }
 ````
 
