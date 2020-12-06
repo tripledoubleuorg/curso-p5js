@@ -13,7 +13,8 @@ O p5.js é uma biblioteca JavaScript open-source para código criativo.
 - [Condicionais](condicionais)
 - [Loops](loops)
 - [Funções](funcoes)
-- Sensores
+- [Classes e Objectos](classes-e-objectos)
+- [Imagens](imagens)
 
 
 ##  Do processing ao P5.js
@@ -350,3 +351,118 @@ function randomColor() {
 }
 ````
 
+## Classes e objectos
+As classes em p5.js são módulos de código reutilizáveis que encapsulam informação e funcionalidades.
+Os objectos são contruídos a partir das classes e podem ser adicionados ou removidos enquanto o programa está a correr.
+
+````Javascript
+let circulo;
+let circulo1;
+function setup() {
+  createCanvas(400, 400);
+  circulo = new Circulo(200, 200, 20);
+  circulo1 = new Circulo(100, 300, 50);
+}
+
+function draw() {
+  background(220);
+  circulo.mostrar();
+  circulo.mover();
+  circulo1.mostrar();
+  circulo1.mover();
+}
+
+class Circulo{
+  constructor(x, y, r){
+    this.x = x;
+    this.y = y;
+    this.r = r;
+  }
+  
+  mostrar(){
+    ellipse(this.x, this.y, this.r);
+  }
+  
+  mover(){
+    this.x = this.x + random(-2, 2);
+    this.y = this.y + random(-2, 2);
+  }
+}
+````
+
+### Array de objectos
+````Javascript
+let circulos = [];
+function setup() {
+  createCanvas(400, 400);
+  for (var i = 0; i < 5; i++){
+    circulos[i] = new Circulo(random(0, height), random(0, height), random(20, 40));
+  }
+  print(circulos.length)
+}
+
+function draw() {
+  background(220);
+  for (var i = 0; i < circulos.length; i++){
+     circulos[i].mostrar();
+     circulos[i].mover();
+  }
+}
+
+class Circulo{
+  constructor(x, y, r){
+    this.x = x;
+    this.y = y;
+    this.r = r;
+  }
+  
+  mostrar(){
+    ellipse(this.x, this.y, this.r);
+  }
+  
+  mover(){
+    this.x = this.x + random(-2, 2);
+    this.y = this.y + random(-2, 2);
+  }
+}
+````
+### Objectos interactivos
+````Javascript
+let circulos = [];
+let circulo
+function setup() {
+  createCanvas(400, 400);
+  print(circulos.length)
+}
+
+function mousePressed(){
+  circulo = new Circulo(mouseX, mouseY, random(20, 40));
+  circulos.push( circulo);
+}
+
+
+function draw() {
+  background(220);
+  for (var i = 0; i < circulos.length; i++){
+     circulos[i].mostrar();
+     circulos[i].mover();
+  }
+}
+
+class Circulo{
+  constructor(x, y, r){
+    this.x = x;
+    this.y = y;
+    this.r = r;
+  }
+  
+  mostrar(){
+    ellipse(this.x, this.y, this.r);
+  }
+  
+  mover(){
+    this.x = this.x + random(-2, 2);
+    this.y = this.y + random(-2, 2);
+  }
+}
+````
