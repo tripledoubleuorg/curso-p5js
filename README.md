@@ -617,6 +617,8 @@ function draw() {
   updatePixels();
 }
 ````
+
+Exemplo adaptado de [The Coding Train](https://www.youtube.com/watch?v=rNqaw8LT2ZU&list=PLRqwX-V7Uu6aKKsDHZdDvN6oCJ2hRY_Ig&index=4)
 ````Javascript
 var video;
 var videoScale = 10;
