@@ -570,7 +570,7 @@ function draw() {
 
 ### Câmera
 
-### Mostrar como imagem
+#### Mostrar como imagem
 ````Javascript
 let video;
 
@@ -587,7 +587,7 @@ function draw() {
 }
 ````
 
-### Manipulação de Pixels
+#### Manipulação de Pixels
 ````Javascript
 var video;
 
