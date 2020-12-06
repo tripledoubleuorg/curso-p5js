@@ -466,3 +466,183 @@ class Circulo{
   }
 }
 ````
+````Javascript
+let circulos = [];
+let circulo;
+let mic;
+let mapVol;
+let vol;
+
+function setup() {
+  createCanvas(400, 400);
+    // iniciar microfone
+  mic = new p5.AudioIn();
+  mic.start();
+}
+
+function volCirculo() {
+  circulo = new Circulo(random(0, width), random(0, height), random(20, 40));
+  circulos.push(circulo); 
+}
+
+
+function draw() {
+  background(220);
+  
+  vol = mic.getLevel();
+  mapVol = map(vol, 0, 1, 0, 5000);
+  print(mapVol )
+  
+
+  if(  mapVol > 500){
+    volCirculo()
+  } 
+  
+  
+  for (var i = 0; i < circulos.length; i++) {
+    circulos[i].mostrar();
+    circulos[i].mover();
+  }
+}
+
+class Circulo {
+  constructor(x, y, r) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+  }
+
+  mostrar() {
+    ellipse(this.x, this.y, this.r);
+  }
+
+  mover() {
+    this.x = this.x + random(-2, 2);
+    this.y = this.y + random(-2, 2);
+  }
+}
+````
+## Imagens
+
+````Javascript
+let img;
+function preload() {
+  img = loadImage('img/imagem.jpg');
+}
+
+function setup() {
+  createCanvas(400, 400);
+    background(220);
+}
+
+function draw() {
+  image(img, 0, 0, width, img.height*width/img.width)
+  
+  var scale = .6;
+  image(img, 0, 0, scale * width, scale * img.height*width/img.width)
+}
+````
+
+## Sensores
+
+### Microfone
+````Javascript
+let mic; 
+let mapVol;
+
+function setup() {
+  // tela
+  createCanvas(400, 400); 
+  
+   // iniciar microfone
+    mic = new p5.AudioIn();
+    mic.start();
+
+}
+
+function draw() {
+  var vol = mic.getLevel();
+  mapVol = map(vol, 0, 1, 0, 255*10);
+  // fundo
+  background(mapVol, 0, 255);
+}
+````
+
+### Câmera
+
+### Mostrar como imagem
+````Javascript
+let video;
+
+function setup() { 
+  createCanvas(320, 240);
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+}
+
+function draw() {
+  background(0)
+  image(video, 0, 0, width, height)
+}
+````
+
+### Manipulação de Pixels
+````Javascript
+var video;
+
+function setup() { 
+  createCanvas(320, 240);
+  pixelDensity(1);
+  video = createCapture(VIDEO);
+  video.size(width, height);
+}
+
+function draw() {
+  loadPixels();
+  video.loadPixels();
+  for (var y = 0; y <= height; y++) {
+    for (var x = 0; x <= width; x++) {
+      var index = (x + y * video.width) * 4;
+      var r = video.pixels[index];
+      var g = video.pixels[index + 1];
+      var b = video.pixels[index + 2];
+      
+      pixels[index] = r;
+      pixels[index + 1] = g;
+      pixels[index + 2] = b;
+      pixels[index + 3] = 255;
+    }
+  }
+  updatePixels();
+}
+````
+````Javascript
+var video;
+var videoScale = 10;
+
+function setup() { 
+  createCanvas(320, 240);
+  pixelDensity(1);
+  video = createCapture(VIDEO);
+  video.size(width / videoScale, height / videoScale);
+}
+
+function draw() {
+  background(0);
+  video.loadPixels();
+  for (var y = 0; y <= video.height; y++) {
+    for (var x = 0; x <= video.width; x++) {
+      var index = (x + y * video.width) * 4;
+      var r = video.pixels[index];
+      var g = video.pixels[index + 1];
+      var b = video.pixels[index + 2];
+      var bright = (r+g+b) / 3;
+      var rectSize = map(bright, 0, 255, 0, videoScale);
+      fill(255);
+      rectMode(CENTER);
+      rect(x * videoScale, y * videoScale, rectSize);
+    }
+  }
+}
+````
