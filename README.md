@@ -8,11 +8,11 @@ O p5.js é uma biblioteca JavaScript open-source para código criativo.
 - [Formas](forma)
 - [Cores](cores)
 - [Texto](texto)
-- [Variáves](variaveis)
+- [Variáves](variáveis)
 - [Operadores](operadores)
 - [Condicionais](condicionais)
 - [Loops](loops)
-- [Funções](funcoes)
+- [Funções](funções)
 - [Classes e Objectos](classes-e-objectos)
 - [Imagens](imagens)
 
@@ -396,7 +396,7 @@ let circulos = [];
 function setup() {
   createCanvas(400, 400);
   for (var i = 0; i < 5; i++){
-    circulos[i] = new Circulo(random(0, height), random(0, height), random(20, 40));
+    circulos[i] = new Circulo(random(0, width), random(0, height), random(20, 40));
   }
   print(circulos.length)
 }
@@ -618,7 +618,7 @@ function draw() {
 }
 ````
 
-Exemplo adaptado de [The Coding Train](https://www.youtube.com/watch?v=rNqaw8LT2ZU&list=PLRqwX-V7Uu6aKKsDHZdDvN6oCJ2hRY_Ig&index=4)
+##### Exemplo adaptado de [The Coding Train](https://www.youtube.com/watch?v=rNqaw8LT2ZU&list=PLRqwX-V7Uu6aKKsDHZdDvN6oCJ2hRY_Ig&index=4)
 ````Javascript
 var video;
 var videoScale = 10;
