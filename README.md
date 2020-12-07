@@ -3,18 +3,19 @@ O p5.js é uma biblioteca JavaScript open-source para código criativo.
 – [https://p5js.org/]
 
 ## Conteudos
-- [Do processing ao p5.js](do-processing-ao-p5.js)
-- [Ambiente do p5.js](ambiente-do-p5-js)
-- [Formas](forma)
-- [Cores](cores)
-- [Texto](texto)
-- [Variáves](variáveis)
-- [Operadores](operadores)
-- [Condicionais](condicionais)
-- [Loops](loops)
-- [Funções](funções)
-- [Classes e Objectos](classes-e-objectos)
-- [Imagens](imagens)
+- [Do processing ao p5.js](#do-processing-ao-p5.js)
+- [Ambiente do p5.js](#ambiente-do-p5-js)
+- [Formas](#formas)
+- [Cores](#cores)
+- [Texto](#texto)
+- [Variáves](#variáveis)
+- [Operadores](#operadores)
+- [Condicionais](#condicionais)
+- [Loops](#loops)
+- [Funções](#funções)
+- [Classes e Objectos](#classes-e-objectos)
+- [Imagens](#imagens)
+- [Sensores](#sensores)
 
 
 ##  Do processing ao P5.js
